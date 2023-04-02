@@ -1,7 +1,7 @@
 package com.academic.Simple.CRUD.API.service;
 
 import com.academic.Simple.CRUD.API.model.Produto;
-import com.academic.Simple.CRUD.API.repository.ProdutoRepository;
+import com.academic.Simple.CRUD.API.repository.ProdutoRepository_old;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,17 +9,17 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ProdutoService {
+public class ProdutoService_old {
 
     @Autowired
-    private ProdutoRepository produtoRepository;
+    private ProdutoRepository_old produtoRepositoryOld;
 
     /**
      * Método para receber todos os produtos.
      * @return todos os produtos da lista.
      */
     public List<Produto> obterTodosProdutos() {
-        return produtoRepository.findAll();
+        return produtoRepositoryOld.obterTodos();
     }
 
     /**
@@ -28,7 +28,7 @@ public class ProdutoService {
      * @return um produto.
      */
     public Optional<Produto> obterProdutoPorId(Integer id) {
-        return produtoRepository.findById(id);
+        return produtoRepositoryOld.obterPorId(id);
     }
 
     /**
@@ -38,7 +38,7 @@ public class ProdutoService {
      */
     public Produto adicionarProduto(Produto produto) {
         // Validação de regra de negócio
-        return produtoRepository.save(produto);
+        return produtoRepositoryOld.adicionar(produto);
     }
 
     /**
@@ -46,7 +46,7 @@ public class ProdutoService {
      * @param id do produto a ser deletado.
      */
     public void deletarProduto(Integer id) {
-        produtoRepository.deleteById(id);
+        produtoRepositoryOld.deletar(id);
     }
 
     /**
@@ -57,7 +57,6 @@ public class ProdutoService {
      */
     public Produto atualizarProduto(Integer id, Produto produto) {
         produto.setId(id);
-        produtoRepository.deleteById(id);
-        return produtoRepository.save(produto);
+        return produtoRepositoryOld.atualizar(produto);
     }
 }
