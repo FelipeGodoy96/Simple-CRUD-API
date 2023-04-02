@@ -1,15 +1,7 @@
-package com.academic.Simple.CRUD.API.model;
+package com.academic.Simple.CRUD.API.view.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+public class ProdutoResponse {
 
-@Entity
-public class Produto {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     private String nome;
@@ -60,14 +52,4 @@ public class Produto {
         this.observacao = observacao;
     }
 
-    public Produto() {
-    }
-
-    public Produto(String nome, Integer quantidade, Double valor, String observacao) {
-        this.nome = nome;
-        this.quantidade = quantidade;
-        this.valor = valor;
-        this.observacao = observacao;
-    }
 }
-
