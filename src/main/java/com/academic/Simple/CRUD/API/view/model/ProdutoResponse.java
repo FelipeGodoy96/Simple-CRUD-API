@@ -10,6 +10,7 @@ public class ProdutoResponse {
 
     private Double valor;
 
+    // Se quiser ocultar o campo observacao na resposta para evitar textos longos: comentar a linha abaixo.
     private String observacao;
 
     public Integer getId() {
