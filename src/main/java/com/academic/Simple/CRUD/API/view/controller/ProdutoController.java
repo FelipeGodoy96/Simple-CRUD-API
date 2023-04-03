@@ -2,6 +2,7 @@ package com.academic.Simple.CRUD.API.view.controller;
 
 import com.academic.Simple.CRUD.API.model.Produto;
 import com.academic.Simple.CRUD.API.service.ProdutoService;
+import com.academic.Simple.CRUD.API.shared.ProdutoDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,29 +17,29 @@ public class ProdutoController {
     private ProdutoService produtoService;
 
     @GetMapping
-    public List<Produto> obterProdutos() {
+    public List<ProdutoDTO> obterProdutos() {
         return produtoService.obterTodosProdutos();
     }
 
     @PostMapping
-    public Produto cadastrarProduto(@RequestBody Produto produto) {
-        return produtoService.adicionarProduto(produto);
+    public ProdutoDTO cadastrarProduto(@RequestBody ProdutoDTO produtoDto) {
+        return produtoService.adicionarProduto(produtoDto);
     }
 
     @GetMapping("/{id}")
-    public Optional<Produto> obterProdutoPorId(@PathVariable Integer id) {
+    public Optional<ProdutoDTO> obterProdutoPorId(@PathVariable Integer id) {
         return produtoService.obterProdutoPorId(id);
     }
 
     @DeleteMapping("/{id}")
     public String deletarProduto(@PathVariable Integer id) {
         produtoService.deletarProduto(id);
-        return "Produto com ID " + id + " foi deletado com sucesso.";
+        return "Produto de ID " + id + " foi deletado com sucesso.";
     }
 
     @PutMapping("/{id}")
-    public Produto atualizarProduto(@PathVariable Integer id, @RequestBody Produto produto) {
-        return produtoService.atualizarProduto(id, produto);
+    public ProdutoDTO atualizarProduto(@PathVariable Integer id, @RequestBody ProdutoDTO produtoDto) {
+        return produtoService.atualizarProduto(id, produtoDto);
     }
 
 }

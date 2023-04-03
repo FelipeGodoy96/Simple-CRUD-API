@@ -1,5 +1,7 @@
 package com.academic.Simple.CRUD.API.shared;
 
+import com.academic.Simple.CRUD.API.model.Produto;
+
 public class ProdutoDTO {
 
     private Integer id;
@@ -60,6 +62,14 @@ public class ProdutoDTO {
         this.quantidade = quantidade;
         this.valor = valor;
         this.observacao = observacao;
+    }
+
+    public ProdutoDTO(Produto produto) {
+        this.id = produto.getId();
+        this.nome = produto.getNome();
+        this.quantidade = produto.getQuantidade();
+        this.valor = produto.getValor();
+        this.observacao = produto.getObservacao();
     }
 
 }
